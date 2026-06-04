@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import HeroSection from "./components/HeroSection";
 
 export default function Home() {
   return (
@@ -20,59 +20,7 @@ export default function Home() {
       </nav>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero.png"
-            alt="Пляжный волейбол на закате"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF7]/30 via-transparent to-[#FAFAF7]" />
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <p className="text-sm font-medium text-[#F5A623] tracking-widest uppercase mb-6">
-            Пляжный волейбольный центр
-          </p>
-          <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-none mb-8 text-white drop-shadow-lg">
-            Пальма
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-light mb-12 max-w-2xl mx-auto drop-shadow">
-            Тренируйся на песке.<br />Играй на уровне профи.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#cta" className="bg-[#F5A623] text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-[#e09510] transition-all hover:scale-105">
-              Начать тренироваться
-            </a>
-            <a href="#about" className="bg-white/20 backdrop-blur text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-white/30 transition-all border border-white/30">
-              Узнать больше
-            </a>
-          </div>
-        </div>
-        <div className="absolute bottom-10 z-10 animate-bounce">
-          <svg width="24" height="24" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </div>
-      </section>
-
-      {/* STATS */}
-      <section className="py-24 px-6">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { num: "6", label: "Кортов на песке" },
-            { num: "200+", label: "Игроков в сезоне" },
-            { num: "12", label: "Тренеров" },
-            { num: "5 лет", label: "Опыта работы" },
-          ].map((s) => (
-            <div key={s.label} className="flex flex-col gap-2">
-              <span className="text-5xl font-bold text-[#F5A623]">{s.num}</span>
-              <span className="text-sm text-[#888] font-medium">{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ABOUT */}
       <section id="about" className="py-24 px-6 bg-white">

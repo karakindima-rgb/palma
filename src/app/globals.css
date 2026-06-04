@@ -22,3 +22,130 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Hero animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes floatMed {
+  0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+  50%       { transform: translateY(-14px) rotate(-2deg) scale(1.03); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.4); }
+  50%       { box-shadow: 0 0 50px rgba(245, 166, 35, 0.8), 0 0 100px rgba(245, 166, 35, 0.3); }
+}
+
+@keyframes scroll-indicator {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50%       { opacity: 0.3; transform: translateY(10px); }
+}
+
+@keyframes particles {
+  0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+}
+
+@keyframes bgKen {
+  0%   { transform: scale(1) translateX(0); }
+  100% { transform: scale(1.08) translateX(-2%); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-up    { animation: fadeUp 0.9s ease forwards; }
+.animate-fade-in    { animation: fadeIn 1.2s ease forwards; }
+.animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-float-med  { animation: floatMed 4s ease-in-out infinite; }
+.animate-scroll     { animation: scroll-indicator 2s ease-in-out infinite; }
+.animate-bg-ken     { animation: bgKen 12s ease-in-out infinite alternate; }
+.animate-scale-in   { animation: scaleIn 0.8s ease forwards; }
+.animate-slide-left { animation: slideInLeft 0.9s ease forwards; }
+.animate-slide-right{ animation: slideInRight 0.9s ease forwards; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-900 { animation-delay: 0.9s; }
+
+.hero-text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #FFE8B0 50%, #F5A623 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.glow-btn {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.gradient-bg {
+  background: linear-gradient(270deg, #F5A623, #FF8C42, #F5A623, #FFD166);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Particle dots */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(245, 166, 35, 0.6);
+  animation: particles linear infinite;
+  pointer-events: none;
+}
+
+/* Glass card */
+.glass {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Opacity 0 initial for animated elements */
+.opacity-0-init { opacity: 0; }
