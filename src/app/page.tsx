@@ -13,6 +13,7 @@ export default function Home() {
           <a href="#training" className="hover:text-black transition-colors">Тренировки</a>
           <a href="#schedule" className="hover:text-black transition-colors">Расписание</a>
           <a href="#contacts" className="hover:text-black transition-colors">Контакты</a>
+          <a href="/companion" className="text-[#F5A623] font-semibold hover:text-[#e09510] transition-colors">ИИ-напарник</a>
         </div>
         <a href="#cta" className="bg-[#F5A623] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#e09510] transition-colors">
           Записаться
@@ -45,7 +46,7 @@ export default function Home() {
               </a>
             </div>
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-              <Image src="/training.png" alt="Тренировка" fill className="object-cover" />
+              <Image src="/about.png" alt="Тренировка" fill className="object-cover" />
             </div>
           </div>
         </div>
@@ -123,6 +124,43 @@ export default function Home() {
                 <div className="text-sm font-medium text-[#F5A623] bg-[#FFF8EE] px-4 py-1.5 rounded-full">{r.spots}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI COMPANION TEASER */}
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #2d1a00 50%, #1a1a1a 100%)' }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold text-[#F5A623] tracking-widest uppercase mb-4">Новое</p>
+              <h2 className="text-5xl font-bold tracking-tight leading-tight mb-6 text-white">
+                ИИ-напарник<br />на корте
+              </h2>
+              <p className="text-lg text-[#aaa] leading-relaxed mb-4">
+                Создай своего волейбольного персонажа. Настрой характер, стиль, роль на поле. Начни как новичок — прокачайся до легенды.
+              </p>
+              <p className="text-lg text-[#888] leading-relaxed mb-10">
+                Твой ИИ-напарник знает всё о пляжном волейболе. И становится умнее вместе с тобой.
+              </p>
+              <a href="/companion" className="inline-flex items-center gap-2 bg-[#F5A623] text-white font-semibold px-8 py-4 rounded-full hover:bg-[#e09510] transition-all hover:scale-105">
+                Создать напарника →
+              </a>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { emoji: '🧠', title: 'Claude AI', desc: 'Отвечает как настоящий игрок — в зависимости от уровня и характера' },
+                { emoji: '👗', title: 'Редактор образа', desc: 'Пол, кожа, волосы, форма — полная кастомизация' },
+                { emoji: '📈', title: 'Прокачка', desc: '6 уровней: от новичка до легенды' },
+                { emoji: '🏐', title: 'Роль и стиль', desc: 'Либеро, нападающий, связующий — своя тактика' },
+              ].map(c => (
+                <div key={c.title} className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/8 transition-colors">
+                  <div className="text-2xl mb-2">{c.emoji}</div>
+                  <div className="text-white font-semibold text-sm mb-1">{c.title}</div>
+                  <div className="text-[#888] text-xs leading-relaxed">{c.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

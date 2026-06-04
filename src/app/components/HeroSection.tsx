@@ -37,7 +37,7 @@ export default function HeroSection() {
         style={{ transform: `translateY(${parallax}px) scale(1.08)` }}
       >
         <Image
-          src="/hero2.png"
+          src="/hero3.png"
           alt="Beach volleyball"
           fill
           className="object-cover"
