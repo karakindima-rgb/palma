@@ -90,22 +90,6 @@ export default function HeroSection() {
         />
       ))}
 
-      {/* Palm decoration top-left */}
-      <div
-        className="absolute top-0 left-0 z-20 w-64 md:w-96 pointer-events-none animate-float-slow"
-        style={{ transformOrigin: "top left" }}
-      >
-        <Image src="/palms.png" alt="" fill={false} width={400} height={400} className="object-contain opacity-80" />
-      </div>
-
-      {/* Palm decoration top-right (mirrored) */}
-      <div
-        className="absolute top-0 right-0 z-20 w-64 md:w-96 pointer-events-none animate-float-med"
-        style={{ transform: "scaleX(-1)", transformOrigin: "top right" }}
-      >
-        <Image src="/palms.png" alt="" fill={false} width={400} height={400} className="object-contain opacity-60" />
-      </div>
-
       {/* CONTENT */}
       <div className="relative z-30 max-w-5xl mx-auto px-6 pt-24 pb-32">
 
