@@ -52,6 +52,19 @@ export default function Home() {
         </div>
       </section>
 
+      {/* COURTS AERIAL */}
+      <section className="relative h-[70vh] overflow-hidden">
+        <Image src="/courts.png" alt="Наши корты" fill className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-12 text-white">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-xs font-semibold text-[#F5A623] tracking-widest uppercase mb-3">Наша площадка</p>
+            <h2 className="text-5xl font-bold tracking-tight mb-4">6 кортов под открытым небом</h2>
+            <p className="text-lg text-white/80 max-w-xl">Живой песок, профессиональные сетки, освещение для вечерних игр. Всё для настоящего пляжного волейбола.</p>
+          </div>
+        </div>
+      </section>
+
       {/* TRAINING */}
       <section id="training" className="py-24 px-6">
         <div className="max-w-6xl mx-auto">

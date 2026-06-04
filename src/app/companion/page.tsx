@@ -60,6 +60,8 @@ export default function CompanionPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [generateError, setGenerateError] = useState('');
   const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -88,6 +90,27 @@ export default function CompanionPage() {
       while (newLevel < 6 && newXp >= XP_THRESHOLDS[newLevel]) newLevel++;
       return { ...prev, xp: newXp, level: newLevel };
     });
+  }
+
+  async function generateImage() {
+    setGenerating(true);
+    setGenerateError('');
+    try {
+      const res = await fetch('/api/companion/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ config }),
+      });
+      const data = await res.json();
+      if (data.imageUrl) {
+        setConfig(prev => ({ ...prev, generatedImageUrl: data.imageUrl }));
+      } else {
+        setGenerateError(data.error ?? 'Ошибка генерации');
+      }
+    } catch {
+      setGenerateError('Нет связи с сервером');
+    }
+    setGenerating(false);
   }
 
   async function sendMessage() {
@@ -152,7 +175,7 @@ export default function CompanionPage() {
 
           {/* Left: Avatar */}
           <div className="flex flex-col items-center gap-4">
-            <div className="w-56 h-72 md:w-64 md:h-80 relative">
+            <div className="w-52 h-52 md:w-60 md:h-60 relative">
               <CompanionAvatar config={config}/>
             </div>
 
@@ -177,6 +200,31 @@ export default function CompanionPage() {
                   style={{ width: `${xpPct}%` }}/>
               </div>
               <p className="text-[10px] text-[#bbb] mt-1 text-center">+5 XP за каждое сообщение</p>
+            </div>
+
+            {/* Generate button */}
+            <div className="flex flex-col items-center gap-1 w-full max-w-[240px]">
+              <button onClick={generateImage} disabled={generating}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-full font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed text-white"
+                style={{ background: generating ? '#aaa' : 'linear-gradient(135deg, #F5A623, #e07010)' }}>
+                {generating ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"/>
+                    Генерирую (~15 сек)…
+                  </>
+                ) : config.generatedImageUrl ? (
+                  <>🔄 Перегенерировать</>
+                ) : (
+                  <>✨ Сгенерировать фото</>
+                )}
+              </button>
+              {config.generatedImageUrl && (
+                <button onClick={() => setConfig(p => ({ ...p, generatedImageUrl: undefined }))}
+                  className="text-xs text-[#aaa] hover:text-[#555] transition-colors">
+                  Вернуть иллюстрацию
+                </button>
+              )}
+              {generateError && <p className="text-xs text-red-500 text-center">{generateError}</p>}
             </div>
 
             {/* Position badge */}
