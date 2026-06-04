@@ -1,65 +1,231 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="bg-[#FAFAF7] text-[#1a1a1a]">
+
+      {/* NAV */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5 backdrop-blur-xl bg-[#FAFAF7]/80 border-b border-black/5">
+        <div className="text-xl font-semibold tracking-tight">🌴 Пальма</div>
+        <div className="hidden md:flex items-center gap-8 text-sm text-[#555]">
+          <a href="#about" className="hover:text-black transition-colors">О центре</a>
+          <a href="#training" className="hover:text-black transition-colors">Тренировки</a>
+          <a href="#schedule" className="hover:text-black transition-colors">Расписание</a>
+          <a href="#contacts" className="hover:text-black transition-colors">Контакты</a>
+        </div>
+        <a href="#cta" className="bg-[#F5A623] text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#e09510] transition-colors">
+          Записаться
+        </a>
+      </nav>
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero.png"
+            alt="Пляжный волейбол на закате"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAF7]/30 via-transparent to-[#FAFAF7]" />
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <p className="text-sm font-medium text-[#F5A623] tracking-widest uppercase mb-6">
+            Пляжный волейбольный центр
           </p>
+          <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-none mb-8 text-white drop-shadow-lg">
+            Пальма
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 font-light mb-12 max-w-2xl mx-auto drop-shadow">
+            Тренируйся на песке.<br />Играй на уровне профи.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="#cta" className="bg-[#F5A623] text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-[#e09510] transition-all hover:scale-105">
+              Начать тренироваться
+            </a>
+            <a href="#about" className="bg-white/20 backdrop-blur text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-white/30 transition-all border border-white/30">
+              Узнать больше
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+        <div className="absolute bottom-10 z-10 animate-bounce">
+          <svg width="24" height="24" fill="none" stroke="white" strokeWidth="2" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+          </svg>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="py-24 px-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {[
+            { num: "6", label: "Кортов на песке" },
+            { num: "200+", label: "Игроков в сезоне" },
+            { num: "12", label: "Тренеров" },
+            { num: "5 лет", label: "Опыта работы" },
+          ].map((s) => (
+            <div key={s.label} className="flex flex-col gap-2">
+              <span className="text-5xl font-bold text-[#F5A623]">{s.num}</span>
+              <span className="text-sm text-[#888] font-medium">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold text-[#F5A623] tracking-widest uppercase mb-4">О центре</p>
+              <h2 className="text-5xl font-bold tracking-tight leading-tight mb-6">
+                Песок — это<br />другой уровень
+              </h2>
+              <p className="text-lg text-[#555] leading-relaxed mb-6">
+                «Пальма» — это пространство для тех, кто хочет развиваться в пляжном волейболе. Мы создали среду, где новички становятся стабильными игроками, а опытные — поднимаются на новый уровень.
+              </p>
+              <p className="text-lg text-[#555] leading-relaxed mb-10">
+                Наши корты находятся под открытым небом. Живой песок, настоящие условия, профессиональные тренеры.
+              </p>
+              <a href="#training" className="inline-flex items-center gap-2 text-[#F5A623] font-semibold hover:gap-4 transition-all">
+                Смотреть тренировки
+                <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+            <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
+              <Image src="/training.png" alt="Тренировка" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRAINING */}
+      <section id="training" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold text-[#F5A623] tracking-widest uppercase mb-4">Тренировки</p>
+            <h2 className="text-5xl font-bold tracking-tight">Найди свой формат</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "🏐",
+                title: "Для новичков",
+                desc: "Базовая техника: приём, подача, атака. Маленькие группы, внимательные тренеры. Прогресс с первой тренировки.",
+                price: "от 1 200 ₽",
+                color: "#FFF8EE",
+                border: "#F5A623",
+              },
+              {
+                icon: "🔥",
+                title: "Продвинутый",
+                desc: "Тактика игры, командная слаженность, разбор ошибок. Для тех, кто уже умеет играть и хочет расти дальше.",
+                price: "от 1 800 ₽",
+                color: "#FFFBF0",
+                border: "#E8921A",
+              },
+              {
+                icon: "🏆",
+                title: "Турнирный",
+                desc: "Подготовка к соревнованиям. Физика, игровой интеллект, разбор соперников. Для амбициозных игроков.",
+                price: "от 2 400 ₽",
+                color: "#FFF5E5",
+                border: "#D4801A",
+              },
+            ].map((t) => (
+              <div
+                key={t.title}
+                className="rounded-3xl p-8 border-2 hover:scale-[1.02] transition-transform cursor-pointer"
+                style={{ backgroundColor: t.color, borderColor: t.border }}
+              >
+                <div className="text-4xl mb-5">{t.icon}</div>
+                <h3 className="text-2xl font-bold mb-3">{t.title}</h3>
+                <p className="text-[#666] leading-relaxed mb-6">{t.desc}</p>
+                <div className="text-xl font-bold text-[#F5A623]">{t.price}</div>
+                <div className="text-sm text-[#999] mt-1">за тренировку</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SCHEDULE */}
+      <section id="schedule" className="py-24 px-6 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <p className="text-xs font-semibold text-[#F5A623] tracking-widest uppercase mb-4">Расписание</p>
+            <h2 className="text-5xl font-bold tracking-tight">Тренировки каждый день</h2>
+          </div>
+          <div className="space-y-3">
+            {[
+              { day: "Понедельник — Пятница", time: "07:00 — 09:00", type: "Утренние группы (новички)", spots: "3 места" },
+              { day: "Понедельник — Пятница", time: "18:00 — 20:00", type: "Вечерние группы (продвинутые)", spots: "2 места" },
+              { day: "Суббота", time: "10:00 — 13:00", type: "Интенсив выходного дня", spots: "5 мест" },
+              { day: "Воскресенье", time: "11:00 — 14:00", type: "Открытая игра + разбор", spots: "8 мест" },
+            ].map((r, i) => (
+              <div key={i} className="flex items-center justify-between px-7 py-5 rounded-2xl bg-[#FAFAF7] border border-black/5 hover:border-[#F5A623]/40 transition-colors">
+                <div>
+                  <div className="font-semibold">{r.type}</div>
+                  <div className="text-sm text-[#888] mt-1">{r.day} · {r.time}</div>
+                </div>
+                <div className="text-sm font-medium text-[#F5A623] bg-[#FFF8EE] px-4 py-1.5 rounded-full">{r.spots}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="cta" className="py-32 px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <div className="text-6xl mb-6">🌴</div>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
+            Первая тренировка<br />бесплатно
+          </h2>
+          <p className="text-xl text-[#666] mb-12 max-w-xl mx-auto">
+            Приходи и попробуй. Если понравится — продолжим вместе.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input
+              type="tel"
+              placeholder="Ваш телефон"
+              className="flex-1 px-6 py-4 rounded-full border border-black/10 bg-white text-lg outline-none focus:border-[#F5A623] transition-colors"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <button type="submit" className="bg-[#F5A623] text-white font-semibold px-8 py-4 rounded-full text-lg hover:bg-[#e09510] transition-all hover:scale-105 whitespace-nowrap">
+              Записаться →
+            </button>
+          </form>
+          <p className="text-sm text-[#aaa] mt-5">Перезвоним в течение 30 минут</p>
         </div>
-      </main>
+      </section>
+
+      {/* CONTACTS */}
+      <section id="contacts" className="py-24 px-6 bg-white border-t border-black/5">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
+          <div>
+            <div className="text-2xl font-bold mb-2">🌴 Пальма</div>
+            <p className="text-[#888] text-sm leading-relaxed">Пляжный волейбольный центр. Тренируйся, играй, побеждай.</p>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-[#888] uppercase tracking-wider mb-4">Адрес</div>
+            <p className="font-medium">ул. Пляжная, 42</p>
+            <p className="text-[#888] text-sm mt-1">пн–вс 06:00 — 22:00</p>
+          </div>
+          <div>
+            <div className="text-sm font-semibold text-[#888] uppercase tracking-wider mb-4">Контакты</div>
+            <a href="tel:+71234567890" className="font-medium hover:text-[#F5A623] transition-colors">+7 (123) 456-78-90</a>
+            <p className="text-[#888] text-sm mt-2">palma@example.ru</p>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-black/5 text-center text-sm text-[#bbb]">
+          © 2025 Пальма. Все права защищены.
+        </div>
+      </section>
+
     </div>
   );
 }
